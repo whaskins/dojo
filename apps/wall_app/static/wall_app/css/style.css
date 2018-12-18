@@ -1,0 +1,17 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.container{
+    margin: 100px;
+    width: 50%;
+
+}
+.message{
+    margin-left: 15px;
+}
+.comment{
+    margin-left: 15px;
+    font-size: 70%;
+    text-align: right;
+}

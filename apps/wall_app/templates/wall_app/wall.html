@@ -1,0 +1,31 @@
+{% extends 'wall_app/index.html' %}
+
+{% block wall %}
+<h3>Post a message</h3>
+<form action="/wall/make_message" method="POST">
+{% csrf_token %}
+<textarea name="message" id="" cols="90" rows="3"></textarea><br>
+<input type="submit" value="Post a message">
+</form>
+{% for message in messages %}
+<h4>{{message.user_id.first_name}} {{message.created_at}}</h4>
+<p class="message">{{message.content}}</p><br>
+
+{% if message.comments %}
+<h5>Comments:</h5>
+{% endif %}
+{% for comment in message.comments.all reversed %}
+<h6>{{comment.user_id.first_name}} {{comment.created_at}}</h6>
+<p class="comment">{{comment.content}}</p>
+
+{% endfor %}
+<dir class="comment">
+    <form action="/wall/make_comment" method="POST">
+        {% csrf_token %}
+        <textarea name="comment"cols="60" rows="3"></textarea><br>
+        <input type="hidden" name="message_id" value="{{message.id}}">
+        <input type="submit" value="Post a comment">
+    </form>
+</dir>
+{% endfor %}
+{% endblock %}

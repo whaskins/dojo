@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Warren Haskins">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'wall_app/css/style.css'%}">
+    <!-----change this--->
+</head>
+
+<body>
+    <div class="container">
+        {% block wall%}
+        {% endblock %}
+    </div>
+</body>
+
+</html>
